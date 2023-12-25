@@ -5,8 +5,24 @@ import { SharedModule } from '#root/services/shared.module'
 
 @Component({
   standalone: true,
-  imports: [SharedModule],
-  template: `<div>Index page works</div>`
+  selector: 'client-only',
+  template: `<div>Rendered only in browser</div>`
+})
+class ClientOnlyComponent {}
+
+@Component({
+  standalone: true,
+  imports: [SharedModule, ClientOnlyComponent],
+  template: `
+    <div>
+      @defer {
+        <client-only />
+      } @placeholder {
+        <div>Loading...</div>
+      }
+      Index page works
+    </div>
+  `
 })
 export default class Page implements OnInit {
   appService = inject(AppService)
