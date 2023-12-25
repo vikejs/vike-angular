@@ -1,6 +1,6 @@
 import { PageContext } from 'vike-angular'
 import { AppService } from '#root/services/app.service'
-import { Component, OnInit, Type, inject } from '@angular/core'
+import { Component, OnInit, inject } from '@angular/core'
 import { SharedModule } from '#root/services/shared.module'
 import { ClientOnlyComponent } from '#root/components/ClientOnly'
 
