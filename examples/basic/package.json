@@ -3,7 +3,8 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "tsc --noEmit"
+    "test": "tsc --noEmit && pnpm run test:units",
+    "test:units": "vitest"
   },
   "dependencies": {
     "@angular/animations": "^17.0.0",
@@ -22,5 +23,9 @@
     "xhr2": "^0.2.1",
     "zone.js": "^0.14.2"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "jsdom": "^23.0.1",
+    "vitest": "^1.1.0"
+  }
 }

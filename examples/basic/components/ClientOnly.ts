@@ -3,6 +3,6 @@ import { Component } from '@angular/core'
 @Component({
   standalone: true,
   selector: 'client-only',
-  template: `<div>Rendered only in browser</div>`
+  template: `<h1>Rendered only in browser</h1>`
 })
 export class ClientOnlyComponent {}
