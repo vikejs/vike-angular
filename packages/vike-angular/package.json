@@ -1,0 +1,55 @@
+{
+  "name": "vike-angular",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": "./dist/src/index.js",
+    "./config": "./dist/renderer/+config.js",
+    "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
+    "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rm -rf dist/ && tsc",
+    "release": "release-me --git-prefix vike-angular --changelog-dir packages/vike-angular/ patch",
+    "release:commit": "release-me --git-prefix vike-angular --changelog-dir packages/vike-angular/ commit"
+  },
+  "peerDependencies": {
+    "@angular/core": "^17.0.0",
+    "@nitedani/vite-plugin-angular": "^17.0.11",
+    "vike": "^0.4.149",
+    "vite": "^5.0.0"
+  },
+  "devDependencies": {
+    "@angular/core": "^17.0.0",
+    "@brillout/release-me": "^0.1.12",
+    "@types/node": "^18.17.18",
+    "typescript": "^5.2.2",
+    "vike": "^0.4.149"
+  },
+  "dependencies": {},
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/src/index.d.ts"
+      ],
+      "config": [
+        "./dist/renderer/+config.d.ts"
+      ],
+      "renderer/onRenderHtml": [
+        "./dist/renderer/onRenderHtml.d.ts"
+      ],
+      "renderer/onRenderClient": [
+        "./dist/renderer/onRenderClient.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist/",
+    "types.d.ts"
+  ],
+  "repository": "github:vikejs/vike-angular",
+  "license": "MIT"
+}

@@ -1,0 +1,23 @@
+{
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "========= Basics": "",
+    "dev": "cd ./packages/vike-angular/ && pnpm run dev",
+    "build": "pnpm --recursive --filter {packages/*} run build",
+    "========= Release": "",
+    "release": "cd ./packages/vike-angular/ && pnpm run release",
+    "release:commit": "cd ./packages/vike-angular/ && pnpm run release:commit",
+    "========= Clean": "",
+    "clean": "git clean -Xdf",
+    "reset": "pnpm run clean && pnpm install && pnpm run build",
+    "========= Formatting": "",
+    "prettier": "git ls-files | egrep '\\.(json|js|jsx|css|ts|tsx|vue|mjs|cjs)$' | grep --invert-match package.json | xargs pnpm exec prettier --write",
+    "========= Only allow pnpm; forbid yarn & npm": "",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "packageManager": "pnpm@8.6.12",
+  "devDependencies": {
+    "prettier": "^3.1.0"
+  }
+}

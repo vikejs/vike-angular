@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@angular/animations": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "@angular/compiler": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/platform-browser": "^17.0.0",
+    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/platform-server": "^17.0.0",
+    "@nitedani/vite-plugin-angular": "^17.0.11",
+    "rxjs": "^7.8.1",
+    "typescript": "5.2.2",
+    "vike": "^0.4.149",
+    "vike-angular": "workspace:*",
+    "vite": "5.0.10",
+    "xhr2": "^0.2.1",
+    "zone.js": "^0.14.2"
+  },
+  "type": "module"
+}
