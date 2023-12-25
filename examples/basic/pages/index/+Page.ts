@@ -1,14 +1,8 @@
 import { PageContext } from 'vike-angular'
 import { AppService } from '#root/services/app.service'
-import { Component, OnInit, inject } from '@angular/core'
+import { Component, OnInit, Type, inject } from '@angular/core'
 import { SharedModule } from '#root/services/shared.module'
-
-@Component({
-  standalone: true,
-  selector: 'client-only',
-  template: `<div>Rendered only in browser</div>`
-})
-class ClientOnlyComponent {}
+import { ClientOnlyComponent } from '#root/components/ClientOnly'
 
 @Component({
   standalone: true,
