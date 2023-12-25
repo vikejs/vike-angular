@@ -4,7 +4,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "tsc --noEmit && pnpm run test:units",
-    "test:units": "vitest"
+    "test:units": "vitest run"
   },
   "dependencies": {
     "@angular/animations": "^17.0.0",
