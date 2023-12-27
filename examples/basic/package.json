@@ -17,7 +17,7 @@
     "@nitedani/vite-plugin-angular": "^17.0.11",
     "rxjs": "^7.8.1",
     "typescript": "5.2.2",
-    "vike": "^0.4.149",
+    "vike": "^0.4.152",
     "vike-angular": "workspace:*",
     "vite": "5.0.10",
     "xhr2": "^0.2.1",

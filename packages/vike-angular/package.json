@@ -19,7 +19,7 @@
   "peerDependencies": {
     "@angular/core": "^17.0.0",
     "@nitedani/vite-plugin-angular": "^17.0.11",
-    "vike": "^0.4.149",
+    "vike": "^0.4.152",
     "vite": "^5.0.0"
   },
   "devDependencies": {
@@ -27,7 +27,7 @@
     "@brillout/release-me": "^0.1.12",
     "@types/node": "^18.17.18",
     "typescript": "^5.2.2",
-    "vike": "^0.4.149"
+    "vike": "^0.4.152"
   },
   "dependencies": {},
   "typesVersions": {

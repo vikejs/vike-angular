@@ -60,11 +60,11 @@ export default {
   }
 } satisfies Config
 
-// We purposely define the ConfigVikeReact interface in this file: that way we ensure it's always applied whenever the user `import vikeAngular from 'vike-angular/config'`
+// We purposely define the ConfigVikeAngular interface in this file: that way we ensure it's always applied whenever the user `import vikeAngular from 'vike-angular/config'`
 import type { Component } from './types'
 declare global {
   namespace VikePackages {
-    interface ConfigVikeReact {
+    interface ConfigVikeAngular {
       /** The page's root component */
       Page?: Component
       /** A component, usually common to several pages, that wraps the root component `Page` */
