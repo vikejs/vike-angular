@@ -66,7 +66,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       </html>`
   }
 
-  let documentHtml: string | ReturnType<typeof escapeInject>
+  let documentHtml: ReturnType<typeof escapeInject>
   const Layout = pageContext.config.Layout ?? undefined
   if (Page) {
     // Angular needs the whole html, because it injects things to head
