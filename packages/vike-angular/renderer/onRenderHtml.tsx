@@ -11,81 +11,51 @@ checkVikeVersion()
 
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   const lang = pageContext.config.lang || 'en'
-  const Page = pageContext.Page
 
-  //TODO: remove this if possible
-  // Angular needs the whole HTML in string form to render, because it injects things to head
-  // Angular outputs sanitized HTML
-  // If there is no Page, we need to use escapeInject instead
-  function getDocumentHtml(escape: false): string
-  function getDocumentHtml(escape: true): ReturnType<typeof escapeInject>
-  function getDocumentHtml(escape = true) {
-    const { favicon, description } = pageContext.config
-    const faviconTag = !favicon
-      ? ''
-      : escape
-        ? escapeInject`<link rel="icon" href="${favicon}" />`
-        : `<link rel="icon" href="${favicon}" />`
-    const descriptionTag = !description
-      ? ''
-      : escape
-        ? escapeInject`<meta name="description" content="${description}" />`
-        : `<meta name="description" content="${description}" />`
+  const { favicon, description } = pageContext.config
+  const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
+  const descriptionTag = !description ? '' : escapeInject`<meta name="description" content="${description}" />`
 
-    const title = getTitle(pageContext)
-    const titleTag = !title ? '' : escape ? escapeInject`<title>${title}</title>` : `<title>${title}</title>`
+  const title = getTitle(pageContext)
+  const titleTag = !title ? '' : escapeInject`<title>${title}</title>`
 
-    return escape
-      ? escapeInject`<!DOCTYPE html>
-      <html lang='${lang}'>
-        <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width,initial-scale=1">
-          ${faviconTag}
-          ${titleTag}
-          ${descriptionTag}
-        </head>
-        <body>
-          <app-root></app-root>
-        </body>
-        <!-- built with https://github.com/vikejs/vike-angular -->
-      </html>`
-      : `<!DOCTYPE html>
-      <html lang='${lang}'>
-        <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width,initial-scale=1">
-          ${faviconTag}
-          ${titleTag}
-          ${descriptionTag}
-        </head>
-        <body>
-          <app-root></app-root>
-        </body>
-        <!-- built with https://github.com/vikejs/vike-angular -->
-      </html>`
-  }
-
-  let documentHtml: ReturnType<typeof escapeInject>
+  let headContent = ''
+  let bodyContent = ''
   const Layout = pageContext.config.Layout ?? undefined
+  const Page = pageContext.Page
   if (Page) {
-    // Angular needs the whole html, because it injects things to head
-    documentHtml = escapeInject`${dangerouslySkipEscape(
-      await renderToString({
-        page: Page,
-        layout: Layout,
-        providers: [{ provide: PageContext, useValue: pageContext }],
-        document: getDocumentHtml(false)
-      })
-    )}`
-  } else {
-    documentHtml = getDocumentHtml(true)
+    const result = await renderToString({
+      page: Page,
+      layout: Layout,
+      providers: [{ provide: PageContext, useValue: pageContext }]
+    })
+
+    const headStart = result.indexOf('<head>') + 6
+    const headEnd = result.indexOf('</head>')
+    headContent = result.substring(headStart, headEnd)
+
+    const bodyStart = result.indexOf('<body>') + 6
+    const bodyEnd = result.indexOf('</body>')
+    bodyContent = result.substring(bodyStart, bodyEnd)
   }
 
-  return {
-    documentHtml,
-    pageContext: {}
-  }
+  const documentHtml = escapeInject`<!DOCTYPE html>
+  <html lang='${lang}'>
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      ${faviconTag}
+      ${titleTag}
+      ${descriptionTag}
+      ${dangerouslySkipEscape(headContent)}
+    </head>
+    <body>
+      ${dangerouslySkipEscape(bodyContent)}
+    </body>
+    <!-- built with https://github.com/vikejs/vike-angular -->
+  </html>`
+
+  return documentHtml
 }
 
 function checkVikeVersion() {
