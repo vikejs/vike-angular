@@ -18,7 +18,7 @@
     "rxjs": "^7.8.1",
     "typescript": "5.2.2",
     "vike": "^0.4.152",
-    "vike-angular": "workspace:*",
+    "vike-angular": "^0.0.2",
     "vite": "5.0.10",
     "xhr2": "^0.2.1",
     "zone.js": "^0.14.2"
