@@ -1,7 +1,7 @@
 // https://vike.dev/onRenderHtml
 export { onRenderHtml }
 
-import { renderToString } from '@nitedani/vite-plugin-angular/server'
+import { renderToString } from '@vikejs/vite-plugin-angular/server'
 import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
 import type { OnRenderHtmlAsync } from 'vike/types'
 import { PageContext } from './PageContext.js'

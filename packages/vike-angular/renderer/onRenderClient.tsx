@@ -1,6 +1,6 @@
 export { onRenderClient }
 
-import { renderPage } from '@nitedani/vite-plugin-angular/client'
+import { renderPage } from '@vikejs/vite-plugin-angular/client'
 import { OnRenderClientAsync } from 'vike/types'
 import { PageContext } from './PageContext'
 

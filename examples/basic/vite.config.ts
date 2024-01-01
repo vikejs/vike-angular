@@ -1,4 +1,4 @@
-import { angular } from '@nitedani/vite-plugin-angular/plugin'
+import { angular } from '@vikejs/vite-plugin-angular/plugin'
 import vike from 'vike/plugin'
 import type { UserConfig } from 'vite'
 
